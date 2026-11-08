@@ -15,6 +15,16 @@ rsync -av --exclude .git dotfiles/home/ ~/
 dconf load / < ~/home/dconf-settings.ini
 ```
 
+## как выглядит 
+<img width="3434" height="1437" alt="изображение" src="https://github.com/user-attachments/assets/40fdeb12-db24-48f1-a32a-4a091425d9d4" />
+
+<img width="3434" height="1437" alt="изображение" src="https://github.com/user-attachments/assets/2e5bf4d8-235f-43b4-8a7c-7fa94659fd95" />
+
+<img width="3434" height="1437" alt="изображение" src="https://github.com/user-attachments/assets/00c590b1-51a9-4806-b6ea-89015a08aa76" />
+
+<img width="3434" height="1437" alt="изображение" src="https://github.com/user-attachments/assets/62302f4a-adcc-4200-b5e4-bf72da7b1687" />
+
+
 ## Не включено (секреты / крупный мусор)
 - `.config/Happ.conf` (VPN-данные), `.config/opencode` (API-ключи), браузеры, `.icons`, кэши.
 
