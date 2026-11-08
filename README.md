@@ -28,10 +28,3 @@ dconf load / < ~/home/dconf-settings.ini
 ## Не включено (секреты / крупный мусор)
 - `.config/Happ.conf` (VPN-данные), `.config/opencode` (API-ключи), браузеры, `.icons`, кэши.
 
-## Обновление
-После изменений в `$HOME`:
-```sh
-rsync -av --exclude .git --exclude README.md ~/dotfiles/home/... # наоборот:
-# копировать из $HOME в репо так же, как при первичной настройке, затем:
-git -C ~/dotfiles add -A && git -C ~/dotfiles commit -m "update" && git -C ~/dotfiles push
-```
