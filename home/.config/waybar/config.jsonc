@@ -1,0 +1,191 @@
+// ============================================================
+//  Waybar — «Station» (Material 3 minimalism)
+//  Палитра снята с обоев 111.png: ночной заснеженный вокзал.
+//  Niri + Gentoo | waybar 0.14
+// ============================================================
+{
+    "layer": "top",
+    "position": "top",
+
+    // ---- Отступы от краёв экрана ----
+    "margin-top": 12,
+    "margin-left": 16,
+    "margin-right": 16,
+    "spacing": 8,
+
+    // Перечитывать style.css при изменении (удобно при подгонке)
+    "reload_style_on_change": true,
+
+    // Всё в modules-center — waybar центрирует этот бокс,
+    // получается один монолитный блок по центру экрана
+    "modules-left": [],
+    "modules-center": [
+        "custom/logo",
+        "niri/workspaces",
+        "niri/window",
+        "clock",
+        "custom/updates",
+        "custom/weather",
+        "temperature",
+        "cpu",
+        "memory",
+        "disk",
+        "network",
+        "backlight",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "battery",
+        "tray",
+        "custom/power"
+    ],
+
+    // ---------- Левый блок ----------
+    "custom/logo": {
+        "format": " ",
+        "tooltip": false
+    },
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "active": "󰐤",
+            "urgent": "󰳤"
+        },
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 45,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) - librewolf": "󰈹 $1"
+        },
+        "tooltip": false
+    },
+
+    // ---------- Центр ----------
+    "clock": {
+        "format": "󰥔 {:%H:%M}",
+        "format-alt": "󰃭 {:%d %B, %A}",
+        "interval": 1,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right"
+        }
+    },
+
+    // ---------- Правый блок: система ----------
+    // Обновления Gentoo (медленно — раз в час)
+    "custom/updates": {
+        "exec": "emerge -pounDN @world 2>/dev/null | grep -c '^\\[ebuild'",
+        "interval": 3600,
+        "format": "󰏗 {}",
+        "format-empty": "",
+        "hide-empty": true,
+        "tooltip-format": "Доступно обновлений @world"
+    },
+
+    "custom/weather": {
+        "exec": "curl -s --max-time 8 'https://wttr.in/Petrozavodsk?format=%t+%C'",
+        "interval": 3600,
+        "format": "󰖐 {}",
+        "hide-empty": true,
+        "tooltip-format": "Петрозаводск, wttr.in"
+    },
+
+    "temperature": {
+        "thermal-zone": 0,
+        "critical-threshold": 80,
+        "format": "󰔏 {temperatureC}°C",
+        "tooltip-format": "CPU {temperatureC}°C / {temperatureF}°F"
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "󰻠 {usage}%",
+        "tooltip-format": "Частота: {avg_frequency} GHz"
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "󰘚 {percentage}%",
+        "tooltip-format": "{used} занято / {total} всего"
+    },
+
+    "disk": {
+        "interval": 60,
+        "path": "/",
+        "format": "󰋊 {percentage_used}%",
+        "tooltip-format": "{used} из {total} на /"
+    },
+
+    // ---------- Правый блок: связь и медиа ----------
+    "network": {
+        "interval": 5,
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-disconnected": "󰤭",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "backlight": {
+        "device": "amdgpu_bl0",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightnessctl -q set +5%",
+        "on-scroll-down": "brightnessctl -q set 5%-",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 0%",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "tooltip": false
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{icon} {format_source}",
+        "format-icons": {
+            "default": ["󰍭", "󰍬"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "tooltip-format": "Микрофон: {source_desc}"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{timeTo}, {power} W"
+    },
+
+    // ---------- Трей и питание ----------
+    "tray": {
+        "icon-size": 18,
+        "spacing": 14
+    },
+
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/powermenu.sh"
+    }
+}

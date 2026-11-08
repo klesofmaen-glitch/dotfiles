@@ -1,0 +1,49 @@
+/* ============================================================
+ *  Rofi Config — «Station»
+ *  Материализм M3 под зимние обои ночной станции (та же палитра,
+ *  что у waybar). Тема — в material.rasi.
+ * ============================================================ */
+
+configuration {
+    /* drun — приложения с иконками, run — команды, window — окна,
+       filebrowser — файловый менеджер, combi — всё сразу */
+    modi:               "drun,run,window,filebrowser,combi";
+    combi-modes:        "drun,run,window";
+    combi-hide-mode-prefix: false;
+
+    show-icons:         true;
+    icon-theme:         "Papirus-Dark";
+    font:               "JetBrains Mono Medium 12";
+
+    /* Подписи режимов (иконки Nerd Font) */
+    display-drun:       "  Приложения";
+    display-run:        "  Команды";
+    display-window:     "  Окна";
+    display-filebrowser:"  Файлы";
+    display-combi:      "  Всё";
+
+    drun-display-format: "{name}";
+    window-format:       "{w}  ·  {c}  ·  {t}";
+    drun-show-actions:   true;
+
+    /* Умный поиск */
+    matching:           "fuzzy";
+    sorting-method:     "fzf";
+    tokenize:           true;
+
+    /* Терминал для консольных приложений */
+    terminal:           "kitty";
+
+    /* Клик мимо — закрыть */
+    click-to-exit:      true;
+
+    /* История и кэш. reload — пересобирать кэш при каждом запуске,
+       иначе новые приложения (например, свежеустановленные)
+       не появятся в списке до ручного удаления ~/.cache/rofi-drun-desktop.cache */
+    drun-use-desktop-cache:   true;
+    drun-reload-desktop-cache: true;
+    disable-history:    false;
+    show-icons:         true;
+}
+
+@import "/home/resets/.config/rofi/material.rasi"

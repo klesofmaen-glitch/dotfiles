@@ -1,0 +1,43 @@
+[Unit]
+Description=Tumbler Thumbnail Service
+After=graphical.target
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.thumbnails.Thumbnailer1
+ExecStart=/usr/bin/python3 -c "
+import os
+import sys
+import dbus
+import dbus.service
+from dbus.mainloop.glib import DBusGMainLoop
+
+class Thumbnailer(dbus.service.Object):
+    def __init__(self, bus_name, object_path):
+        dbus.service.Object.__init__(self, bus_name, object_path)
+        
+    @dbus.service.method('org.freedesktop.thumbnails.Thumbnailer1',
+                         in_signature='a{ss}b', out_signature='')
+    def Create(self, uri_array, force):
+        for uri in uri_array:
+            file_path = uri.replace('file://', '')
+            if os.path.exists(file_path):
+                output_path = os.path.expanduser('~/.cache/tumbler/thumbnails/normal/') + os.path.basename(file_path) + '.png'
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                # Здесь можно добавить логику создания миниатюр
+        return
+
+if __name__ == '__main__':
+    DBusGMainLoop(set_as_default=True)
+    bus = dbus.SessionBus()
+    name = dbus.service.BusName('org.freedesktop.thumbnails.Thumbnailer1', bus)
+    object = Thumbnailer(name, '/org/freedesktop/thumbnails/Thumbnailer1')
+    loop = dbus.glib.DBusGMainLoop()
+    mainloop = dbus.glib.DBusMainLoop(set_as_default=True)
+    mainloop.run()
+"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

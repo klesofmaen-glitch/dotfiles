@@ -1,0 +1,37 @@
+[Default Applications]
+x-scheme-handler/tg=userapp-AyuGram Desktop-KUVLU3.desktop
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-Z50LU3.desktop
+x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/obsidian=obsidian.desktop
+image/jpeg=firefox-bin.desktop
+application/x-msdownload=steam.desktop
+application/octet-stream=kitty.desktop
+x-scheme-handler/antigravity=antigravity.desktop
+x-scheme-handler/http=firefox-bin.desktop
+x-scheme-handler/https=firefox-bin.desktop
+x-scheme-handler/chrome=firefox-bin.desktop
+text/html=firefox-bin.desktop
+application/x-extension-htm=firefox-bin.desktop
+application/x-extension-html=firefox-bin.desktop
+application/x-extension-shtml=firefox-bin.desktop
+application/xhtml+xml=firefox-bin.desktop
+application/x-extension-xhtml=firefox-bin.desktop
+application/x-extension-xht=firefox-bin.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-AyuGram Desktop-KUVLU3.desktop;
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-Z50LU3.desktop;
+image/jpeg=firefox-bin.desktop;
+application/x-msdownload=steam.desktop;
+application/octet-stream=kitty.desktop;
+x-scheme-handler/antigravity=antigravity.desktop;
+x-scheme-handler/http=firefox-bin.desktop;
+x-scheme-handler/https=firefox-bin.desktop;
+x-scheme-handler/chrome=firefox-bin.desktop;
+text/html=firefox-bin.desktop;
+application/x-extension-htm=firefox-bin.desktop;
+application/x-extension-html=firefox-bin.desktop;
+application/x-extension-shtml=firefox-bin.desktop;
+application/xhtml+xml=firefox-bin.desktop;
+application/x-extension-xhtml=firefox-bin.desktop;
+application/x-extension-xht=firefox-bin.desktop;

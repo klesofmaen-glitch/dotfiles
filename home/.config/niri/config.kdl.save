@@ -1,0 +1,153 @@
+ф// Автозапуск сервисов
+spawn-at-startup "awww-daemon"
+spawn-at-startup "awww" "img" "/home/resets/mpp/11.jpeg"
+spawn-at-startup "Xwayland" ":0"
+spawn-at-startup "dbus-update-activation-environment" "DISPLAY"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "gentoo-pipewire-launcher"
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri
+spawn-at-startup "waybar"
+//spawn-at-startup "noctalia-shell"
+input {
+    keyboard {
+        xkb {
+            layout "us,ru"
+            options "grp:alt_shift_toggle,compose:ralt,ctrl:nocaps"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    warp-mouse-to-focus
+    // Фокус при наведении (как вы просили)
+    focus-follows-mouse max-scroll-amount="100%"
+}
+
+// Настройки вывода (Мониторы)
+output "DP-2" {
+    // Указываем кастомное разрешение с флагом custom=true
+    mode "3440x1440@165.001"
+    position x=2560 y=0
+}
+
+
+output "eDP-1" {
+    mode "1920x1200@60.026"
+    position x=6000 y=0
+}
+output "DP-1"{
+    mode "2560x1440@75.000"
+    position x=0 y=0
+}
+// Глобальное отключение заголовков окон
+prefer-no-csd
+
+layout {
+    border {
+        on
+        width 2
+        active-color "#b4befe"
+        inactive-color "#25212e"
+    }
+    
+    focus-ring {
+        off
+    }
+}
+
+
+
+
+
+
+// Объединенные правила для окон
+window-rule {
+    default-column-width { proportion 0.5; }
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Правила для конкретных приложений
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+overview {
+    // Укажите желаемый цвет в формате HEX (альфа-канал здесь игнорируется)
+    backdrop-color "#1e1e2e" 
+}
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
+
+binds {
+    // Навигация (Mod = Super) 
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+
+    // Перемещение окон между мониторами 
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+
+    // Софт [cite: 65-71]
+    Mod+E { spawn "thunar"; }
+    Mod+Q { spawn "kitty" "--hold" "fastfetch"; }
+    Mod+D { spawn "firefox-bin"; }
+    Mod+R { spawn "rofi" "-show" "drun" ; }
+    //Mod+W { spawn "sh" "/home/resets/mmpp/chw.sh";}
+    Mod+W { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
+    // Управление окном 
+    Super+Z { maximize-column; }
+    Mod+C { close-window; }
+    Mod+F { fullscreen-window; }
+
+    // Мышь и Воркспейсы
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+      Mod+Escape { toggle-overview; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    // Изменение размера и скриншоты
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+}
+
+

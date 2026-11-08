@@ -1,0 +1,192 @@
+/* ============================================================
+   Waybar — «Station»
+   Палитра снята с обоев 111.png: заснеженный ночной вокзал.
+   Ночь #0E1320, голубое небо #7EC3EA, тёплый янтарь окон
+   #E8A75A, снежно-белый текст. Фон — полностью непрозрачный.
+   ============================================================ */
+
+/* ---------- Токены (тёмная тема «Station») ---------- */
+@define-color m3-surface        #0E1420;  /* tonal surface, непрозрачный  */
+@define-color m3-surface-high   #16243C;  /* hover / active               */
+@define-color m3-surface-bright #1E3050;  /* needs-attention              */
+@define-color m3-primary        #7EC3EA;  /* зимнее небо                  */
+@define-color m3-on-surface     #DCE6F2;  /* основной текст (снег)        */
+@define-color m3-on-variant     #8898B4;  /* приглушённый текст (тени)    */
+@define-color m3-tertiary       #E8A75A;  /* тёплый свет окон             */
+@define-color m3-error          #FF9E8A;  /* хвостовые огни               */
+@define-color m3-shadow         rgba(0, 0, 0, 1);
+
+* {
+    font-family: "JetBrains Mono", "Symbols Nerd Font", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* ---------- Монолитная карточка (всё в одном блоке по центру) ---------- */
+.modules-center {
+    background-color: @m3-surface;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px @m3-shadow;
+    padding: 5px 10px;
+    transition: all 0.25s ease;
+}
+
+/* ---------- Модули внутри карточки ---------- */
+.modules-center > * {
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 4px 12px;
+    margin: 0 1px;
+    color: @m3-on-surface;
+    transition: all 0.18s ease;
+}
+
+/* State layer Material 3: 8% primary на ховере */
+.modules-center > *:hover {
+    background-color: rgba(126, 195, 234, 0.10);
+}
+
+/* ---------- Левый блок ---------- */
+
+#custom-logo {
+    color: @m3-primary;
+    font-size: 22px;
+    padding: 2px 12px;
+}
+
+#workspaces button {
+    color: @m3-on-variant;
+    padding: 0 6px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: @m3-primary;
+    text-shadow: 0 0 10px rgba(126, 195, 234, 0.55);
+}
+
+#workspaces button.urgent {
+    color: @m3-error;
+}
+
+#workspaces button:hover {
+    color: @m3-on-surface;
+}
+
+#window {
+    color: @m3-on-variant;
+    font-weight: 500;
+    padding-right: 8px;
+}
+
+/* ---------- Часы (акцент внутри блока) ---------- */
+
+#clock {
+    color: @m3-tertiary;
+    padding: 4px 18px;
+    font-size: 17px;
+}
+
+#clock:hover {
+    background-color: rgba(126, 195, 234, 0.14);
+}
+
+/* ---------- Правый блок: акценты модулей ---------- */
+
+#custom-updates  { color: @m3-tertiary; }
+#custom-weather  { color: @m3-primary; }
+#temperature     { color: @m3-primary; }
+#cpu             { color: @m3-primary; }
+#memory          { color: @m3-primary; }
+#disk            { color: @m3-on-variant; }
+#network         { color: @m3-primary; }
+#backlight       { color: @m3-on-surface; }
+
+#temperature.critical {
+    color: @m3-error;
+    background-color: rgba(255, 158, 138, 0.10);
+}
+
+#network.disconnected,
+#disk {
+    color: @m3-on-variant;
+}
+
+/* ---------- Звук ---------- */
+
+#pulseaudio {
+    color: @m3-primary;
+}
+
+#pulseaudio.muted,
+#pulseaudio.microphone.muted {
+    color: @m3-on-variant;
+    opacity: 0.75;
+}
+
+#pulseaudio.microphone {
+    color: @m3-primary;
+}
+
+/* ---------- Батарея ---------- */
+
+#battery { color: @m3-primary; }
+
+#battery.warning:not(.charging) {
+    color: @m3-tertiary;
+}
+
+#battery.critical:not(.charging) {
+    color: @m3-error;
+    background-color: rgba(255, 158, 138, 0.10);
+}
+
+#battery.charging {
+    color: @m3-primary;
+}
+
+/* ---------- Трей и питание ---------- */
+
+#tray {
+    padding: 0 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @m3-surface-bright;
+}
+
+#custom-power {
+    color: @m3-on-variant;
+    font-size: 18px;
+}
+
+#custom-power:hover {
+    color: @m3-error;
+    background-color: rgba(255, 158, 138, 0.12);
+}
+
+/* ---------- Tooltip ---------- */
+
+tooltip {
+    background-color: @m3-surface-high;
+    border-radius: 14px;
+    color: @m3-on-surface;
+    box-shadow: 0 4px 16px @m3-shadow;
+}
+
+tooltip label {
+    color: @m3-on-surface;
+    font-weight: 500;
+}

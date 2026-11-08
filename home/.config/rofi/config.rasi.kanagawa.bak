@@ -1,0 +1,126 @@
+/* ================================================= */
+/*  Rofi Config - Kanagawa Theme (with Image Banner) */
+/* ================================================= */
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "JetBrainsMono Nerd Font 12";
+    display-drun: " ";
+    display-run: " ";
+    display-window: " ";
+    drun-display-format: "{name}";
+    sidebar-mode: false;
+}
+
+* {
+    /* Цветовая палитра Kanagawa */
+    sumiInk1:      #1F1F28;
+    sumiInk2:      #2A2A37;
+    sumiInk3:      #363646;
+    fujiWhite:     #DCD7BA;
+    springBlue:    #7FB4CA;
+    crystalBlue:   #7E9CD8;
+    samuraiRed:    #C34043;
+    waveBlue1:     #2D4F67;
+    waveAqua1:     #6A9589;
+    oldWhite:      #C8C093;
+    fujiGray:      #727169;
+
+    background-color: transparent;
+    text-color:       @fujiWhite;
+    margin:           0px;
+    padding:          0px;
+    spacing:          0px;
+}
+
+window {
+    background-color: @sumiInk1;
+    border:           2px;
+    border-color:     @crystalBlue;
+    border-radius:    10px;
+    width:            600px;
+    padding:          20px;
+    location:         center;
+}
+
+mainbox {
+    spacing: 15px;
+    /* Порядок элементов: картинка -> поиск -> список программ */
+    children: [ dummy, inputbar, listview ];
+}
+
+/* ================================================= */
+/* Блок с фотографией / баннером                     */
+/* ================================================= */
+dummy {
+    expand: false;
+    /* Увеличьте или уменьшите padding, чтобы изменить высоту картинки */
+    padding: 100px; 
+    
+    /* УКАЖИТЕ ПУТЬ К ВАШЕЙ КАРТИНКЕ ЗДЕСЬ */
+    /* Параметр 'width' позволяет картинке заполнить блок (как cover в CSS) */
+    background-image: url("~/mpp/1.jpeg", width);
+    
+    border-radius: 8px;
+}
+
+inputbar {
+    background-color: @sumiInk2;
+    border-radius:    8px;
+    padding:          12px 15px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color:       @springBlue;
+    font:             "JetBrainsMono Nerd Font 14";
+    vertical-align:   0.5;
+}
+
+entry {
+    placeholder:       "Поиск...";
+    placeholder-color: @fujiGray;
+    text-color:        @fujiWhite;
+    vertical-align:    0.5;
+    blink:             true;
+}
+
+listview {
+    lines:      7; /* Уменьшено до 6 строк, чтобы окно было компактным */
+    columns:    1;
+    spacing:    6px;
+    scrollbar:  false;
+    border:     0px;
+}
+
+element {
+    padding:          10px;
+    border-radius:    8px;
+    background-color: transparent;
+    spacing:          10px;
+}
+
+element normal.normal, element alternate.normal {
+    background-color: transparent;
+    text-color:       @fujiWhite;
+}
+
+element selected.normal {
+    background-color: @waveBlue1;
+    text-color:       @oldWhite;
+    border:           1px;
+    border-color:     @springBlue;
+}
+
+element-icon {
+    size:             24px;
+    vertical-align:   0.5;
+}
+
+element-text {
+    text-color:       inherit;
+    vertical-align:   0.5;
+}

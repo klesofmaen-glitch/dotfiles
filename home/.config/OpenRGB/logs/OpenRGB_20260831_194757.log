@@ -1,0 +1,107 @@
+    OpenRGB v0.9+ (1.0rc2)
+    Commit:  from 
+    Launched: 20260831_194757
+====================================================================================================
+
+53    |Info:    [ResourceManager] Initializing HID interfaces: Success
+53    |Info:    ------------------------------------------------------
+53    |Info:    |               Start device detection               |
+53    |Info:    ------------------------------------------------------
+66    |Info:    ------------------------------------------------------
+66    |Info:    |             Detecting I2C interfaces               |
+66    |Info:    ------------------------------------------------------
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-3 Device 1002:1638 Subsystem: 17AA:5095
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-10 Device 1022:790B Subsystem: 17AA:5095
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-1 Device 0000:0000 Subsystem: 0000:0000
+67    |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-8 Device 0000:0000 Subsystem: 0000:0000
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-6 Device 1002:1638 Subsystem: 17AA:5095
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-4 Device 1002:1638 Subsystem: 17AA:5095
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-11 Device 1022:790B Subsystem: 17AA:5095
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-2 Device 0000:0000 Subsystem: 0000:0000
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-0 Device 0000:0000 Subsystem: 0000:0000
+67    |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+67    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-9 Device 0000:0000 Subsystem: 0000:0000
+67    |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+68    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-7 Device 0000:0000 Subsystem: 0000:0000
+68    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-5 Device 1002:1638 Subsystem: 17AA:5095
+68    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-SYNA0001:00 Device 0000:0000 Subsystem: 0000:0000
+68    |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-12 Device 1022:790B Subsystem: 17AA:5095
+68    |Info:    ------------------------------------------------------
+68    |Info:    |               Detecting I2C devices                |
+68    |Info:    ------------------------------------------------------
+936   |Info:    ------------------------------------------------------
+937   |Info:    |            Detecting I2C DIMM modules              |
+937   |Info:    ------------------------------------------------------
+1127  |Info:    [ResourceManager] Detected occupied slot 1, bus 13, type (null)
+1266  |Info:    [ResourceManager] Detected occupied slot 2, bus 13, type (null)
+1266  |Info:    ------------------------------------------------------
+1266  |Info:    |               Detecting I2C PCI devices            |
+1266  |Info:    ------------------------------------------------------
+1268  |Info:    ------------------------------------------------------
+1268  |Info:    |               Detecting HID devices                |
+1268  |Info:    ------------------------------------------------------
+1268  |Warning: Couldn't open hid dev /dev/hidraw6: Failed to open a device with path '/dev/hidraw6': Permission denied
+1268  |Info:    ------------------------------------------------------
+1268  |Info:    |            Detecting libusb HID devices            |
+1268  |Info:    ------------------------------------------------------
+1287  |Info:    ------------------------------------------------------
+1287  |Info:    |              Detecting other devices               |
+1287  |Info:    ------------------------------------------------------
+1317  |Info:    [ResourceManager] Calling Post-detection callbacks
+1317  |Info:    ------------------------------------------------------
+1317  |Info:    |                Detection completed                 |
+1317  |Info:    ------------------------------------------------------
+1317  |Dialog:  <h2>Some internal devices may not be detected:</h2><p>One or more I2C or SMBus interfaces failed to initialize.</p><p><b>RGB DRAM modules, some motherboards' onboard RGB lighting, and RGB Graphics Cards, will not be available in OpenRGB</b> without I2C or SMBus.</p><h4>How to fix this:</h4><p>On Linux, this is usually because the i2c-dev module is not loaded.</p><p>You must load the i2c-dev module along with the correct i2c driver for your motherboard. This is usually i2c-piix4 for AMD systems and i2c-i801 for Intel systems.</p><p>See <a href='https://help.openrgb.org/'>help.openrgb.org</a> for additional troubleshooting steps if you keep seeing this message.<br></p><h3>If you are not using internal RGB on a desktop this message is not important to you.</h3>
+31691 |Info:    [ResourceManager] Initializing HID interfaces: Success
+31691 |Info:    ------------------------------------------------------
+31691 |Info:    |               Start device detection               |
+31691 |Info:    ------------------------------------------------------
+31709 |Info:    ------------------------------------------------------
+31709 |Info:    |             Detecting I2C interfaces               |
+31709 |Info:    ------------------------------------------------------
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-3 Device 1002:1638 Subsystem: 17AA:5095
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-10 Device 1022:790B Subsystem: 17AA:5095
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-1 Device 0000:0000 Subsystem: 0000:0000
+31709 |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-8 Device 0000:0000 Subsystem: 0000:0000
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-6 Device 1002:1638 Subsystem: 17AA:5095
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-4 Device 1002:1638 Subsystem: 17AA:5095
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-11 Device 1022:790B Subsystem: 17AA:5095
+31709 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-2 Device 0000:0000 Subsystem: 0000:0000
+31710 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-0 Device 0000:0000 Subsystem: 0000:0000
+31710 |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+31710 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-9 Device 0000:0000 Subsystem: 0000:0000
+31710 |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+31710 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-7 Device 0000:0000 Subsystem: 0000:0000
+31710 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-5 Device 1002:1638 Subsystem: 17AA:5095
+31710 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-SYNA0001:00 Device 0000:0000 Subsystem: 0000:0000
+31710 |Info:    [ResourceManager] Registering I2C interface: /dev/i2c-12 Device 1022:790B Subsystem: 17AA:5095
+31710 |Info:    ------------------------------------------------------
+31710 |Info:    |               Detecting I2C devices                |
+31710 |Info:    ------------------------------------------------------
+32576 |Info:    ------------------------------------------------------
+32576 |Info:    |            Detecting I2C DIMM modules              |
+32576 |Info:    ------------------------------------------------------
+32768 |Info:    [ResourceManager] Detected occupied slot 1, bus 13, type (null)
+32907 |Info:    [ResourceManager] Detected occupied slot 2, bus 13, type (null)
+32907 |Info:    ------------------------------------------------------
+32907 |Info:    |               Detecting I2C PCI devices            |
+32907 |Info:    ------------------------------------------------------
+32910 |Info:    ------------------------------------------------------
+32910 |Info:    |               Detecting HID devices                |
+32910 |Info:    ------------------------------------------------------
+32910 |Warning: Couldn't open hid dev /dev/hidraw6: Failed to open a device with path '/dev/hidraw6': Permission denied
+32910 |Info:    ------------------------------------------------------
+32910 |Info:    |            Detecting libusb HID devices            |
+32910 |Info:    ------------------------------------------------------
+32910 |Info:    ------------------------------------------------------
+32910 |Info:    |              Detecting other devices               |
+32910 |Info:    ------------------------------------------------------
+32931 |Info:    [ResourceManager] Calling Post-detection callbacks
+32931 |Info:    ------------------------------------------------------
+32931 |Info:    |                Detection completed                 |
+32931 |Info:    ------------------------------------------------------
+32931 |Dialog:  <h2>Some internal devices may not be detected:</h2><p>One or more I2C or SMBus interfaces failed to initialize.</p><p><b>RGB DRAM modules, some motherboards' onboard RGB lighting, and RGB Graphics Cards, will not be available in OpenRGB</b> without I2C or SMBus.</p><h4>How to fix this:</h4><p>On Linux, this is usually because the i2c-dev module is not loaded.</p><p>You must load the i2c-dev module along with the correct i2c driver for your motherboard. This is usually i2c-piix4 for AMD systems and i2c-i801 for Intel systems.</p><p>See <a href='https://help.openrgb.org/'>help.openrgb.org</a> for additional troubleshooting steps if you keep seeing this message.<br></p><h3>If you are not using internal RGB on a desktop this message is not important to you.</h3>
+45904 |Info:    [NetworkServer] Network connection thread started on port 6742
+47586 |Info:    [NetworkServer] Connection thread closed

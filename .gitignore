@@ -1,0 +1,6 @@
+# Кэши и мусор
+__pycache__/
+*.pyc
+node_modules/
+*.swp
+*~
